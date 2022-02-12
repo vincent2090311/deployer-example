@@ -101,3 +101,9 @@ Summary of all available commands:
 | stratus:redis:clear | Clears Redis cache |
 | stratus:varnish:clear | Clears Varnish cache |
 | stratus:nginx:update | Reload Nginx |
+
+Useful commands for deploy.php file:
+```
+// Webscale Stratus autoscaling requires absolute symlinks
+set('use_relative_symlink', false);
+```
