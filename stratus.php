@@ -26,6 +26,13 @@ task('stratus:varnish', function () {
     }
 });
 
+desc('Stratus Nginx Reload');
+task('stratus:nginx:update', function () {
+    if (!isDev()) {
+        run('{{stratus_cli}} nginx.update');
+    }
+});
+
 desc('Turn off cron before deploy');
 task('stratus:cron_disable', function () {
     if (isProduction()) {
@@ -65,6 +72,8 @@ task('stratus:autoscale', function () {
         invoke('stratus:zdd:init');
         writeln('<info>Switching to new code base</info>');
         invoke('stratus:zdd:switch');
+        writeln('<info>Reload Nginx in case of Docroot symlink change</info>');
+        invoke('stratus:nginx:update');
         writeln('<info>Clearing caches one more time after blue or green switched...</info>');
         invoke('stratus:cc');
     }
