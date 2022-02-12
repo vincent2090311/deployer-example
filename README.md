@@ -1,4 +1,4 @@
-# deployer-example
+# Webscale Stratus deployer-example
 Webscale Stratus Deployment example repo using Deployer.org application
 
 What is Deployer? <BR>
@@ -85,3 +85,16 @@ after('success', 'stratus:varnish:clear');
 after('success', 'stratus:redis:clear');
 after('success', 'stratus:cache:clear');
 ```
+
+Summary of all available commands:
+stratus:cron:stop	Stop Crons from running
+stratus:cron:start	Start crons
+stratus:zdd:init	Zero Downtime Deployment Init
+stratus:zdd:switch	Zero Downtime Deployment Switch with check
+stratus:autoscaling:reinit	It will issue a redeploy of PHP-FPM services
+stratus:cc	Clears everything
+stratus:cloudfront:clear	Clears Cloudfront cache
+stratus:opcache:clear	Clears OPCache cache
+stratus:redis:clear	Clears Redis cache
+stratus:varnish:clear	Clears Varnish cache
+stratus:nginx:update Reload Nginx
